@@ -1,0 +1,25 @@
+{
+  "name": "team-profile_generator",
+  "version": "1.0.0",
+  "description": "A command-line application to generate a HTML page",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pmorris50/Team-Profile_Generator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pmorris50/Team-Profile_Generator/issues"
+  },
+  "homepage": "https://github.com/pmorris50/Team-Profile_Generator#readme",
+  "dependencies": {
+    "inquirer": "^8.2.4"
+  }
+}
