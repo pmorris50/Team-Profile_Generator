@@ -4,8 +4,10 @@ const Engineer = require('./lib/Engineer.js');
 const Intern = require('./lib/Intern.js');
 const inquirer = require('inquirer');
 const questions = require('./questions');
-const fs = require('fs');
-const team = [];
+const fs = require('fs')
+let currentManager = team.filter(Manager);
+let currentEngineer = team.filter(Engineer);
+let currentIntern = team.filter(Intern);
 
 function addManager() {
     inquirer.prompt(questions.manager)
@@ -23,21 +25,23 @@ function addManager() {
                 return teamBuilt()
             }
         })
-}
-addManager(team.manager) {
-    return `<div class = row>
+    }
+    addManager()
+function managerCard(manager) {
+    let currentManager = team.filter(manager)
+    return `
     <div class="card" >
         <div class="card-body">
-          <h5 class="card-title">${team.manager.name}</h5>
+          <h5 class="card-title">${currentManager.name}</h5>
           <h6 class="card-subtitle mb-2 text-muted">Manager</h6>
              <ul class="list-group list-group-flush">
-                 <li class="list-group-item">ID: ${team.manager.id}</li>
-                <li class="list-group-item">Email: ${team.manager.email}</li>
-                 <li class="list-group-item">Office number: ${team.manager.officeNumber}</li>
+                 <li class="list-group-item">ID: ${currentManager.id}</li>
+                <li class="list-group-item">Email: ${currentManager.email}</li>
+                 <li class="list-group-item">Office number: ${currentManager.officeNumber}</li>
             </ul>
         </div>
     </div>
-</div>`
+`
 };
 
 
@@ -80,9 +84,9 @@ function addIntern() {
 }
 
 
-
 function teamBuilt() {
-    fs.writeFileSync('./dist/team.html', managerCard(team.manager), (err) => err ? console.log(err) : console.log('success'))
+   
+    fs.writeFileSync('./dist/team.html', managerCard(currentManager), (err) => err ? console.log(err) : console.log('success'))
     // call at end of each addEmployee function at else
 
 
