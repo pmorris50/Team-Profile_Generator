@@ -4,10 +4,12 @@ const Engineer = require('./lib/Engineer.js');
 const Intern = require('./lib/Intern.js');
 const inquirer = require('inquirer');
 const questions = require('./questions');
+//const htmlMetaAndHeader = require('./htmltemplate')
 const fs = require('fs')
-let currentManager = team.filter(Manager);
-let currentEngineer = team.filter(Engineer);
-let currentIntern = team.filter(Intern);
+const team = []
+// let currentManager = team.filter(Manager);
+// let currentEngineer = team.filter(Engineer);
+// let currentIntern = team.filter(Intern);
 
 function addManager() {
     inquirer.prompt(questions.manager)
@@ -25,23 +27,32 @@ function addManager() {
                 return teamBuilt()
             }
         })
-    }
-    addManager()
+}
+addManager();
+
 function managerCard(manager) {
-    let currentManager = team.filter(manager)
+    let managerArray = team.filter((currentEmployee) => {
+        return currentEmployee.getRole() == 'Manager';
+    })
+
+    console.log(managerArray)
+
+return managerArray.map((data) =>{
     return `
     <div class="card" >
         <div class="card-body">
-          <h5 class="card-title">${currentManager.name}</h5>
+          <h5 class="card-title">${data.name}</h5>
           <h6 class="card-subtitle mb-2 text-muted">Manager</h6>
              <ul class="list-group list-group-flush">
-                 <li class="list-group-item">ID: ${currentManager.id}</li>
-                <li class="list-group-item">Email: ${currentManager.email}</li>
-                 <li class="list-group-item">Office number: ${currentManager.officeNumber}</li>
+                 <li class="list-group-item">ID: ${data.id}</li>
+                <li class="list-group-item">Email: ${data.email}</li>
+                 <li class="list-group-item">Office number: ${data.officeNumber}</li>
             </ul>
         </div>
     </div>
 `
+})
+ 
 };
 
 
@@ -85,8 +96,8 @@ function addIntern() {
 
 
 function teamBuilt() {
-   
-    fs.writeFileSync('./dist/team.html', managerCard(currentManager), (err) => err ? console.log(err) : console.log('success'))
+
+    fs.writeFileSync('./dist/team.html', htmlMetaAndHeader(), (err) => err ? console.log(err) : console.log('success'))
     // call at end of each addEmployee function at else
 
 
@@ -97,3 +108,25 @@ function init() {
 
 
 }
+const htmlMetaAndHeader = () => {
+    return `<!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Team Profile Generator</title>
+    </head>
+    <body>
+        <header>
+            <h1>My Team</h1>
+    <main class = 'container'>
+    ${managerCard()}
+    `
+
+}
+console.table(team);
