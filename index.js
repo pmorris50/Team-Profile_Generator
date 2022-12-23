@@ -54,6 +54,51 @@ return managerArray.map((data) =>{
 })
  
 };
+function engineerCard(engineer) {
+    let engineerArray = team.filter((currentEmployee) => {
+        return currentEmployee.getRole() == 'Engineer';
+    })
+
+    console.log(engineerArray)
+
+return engineerArray.map((data) =>{
+    return `
+    <div class="card" >
+        <div class="card-body">
+          <h5 class="card-title">${data.name}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Engineer</h6>
+             <ul class="list-group list-group-flush">
+                 <li class="list-group-item">ID: ${data.id}</li>
+                <li class="list-group-item">Email: ${data.email}</li>
+                 <li class="list-group-item">Github Profile: ${data.github}</li>
+            </ul>
+        </div>
+    </div>
+`
+})
+ 
+};
+function internCard(){
+    let internArray = team.filter((currentEmployee) =>{
+        return currentEmployee.getRole() == 'Intern';
+    })
+    console.log(internArray)
+    return internArray.map((data) =>{
+        return `
+        <div class="card" >
+            <div class="card-body">
+              <h5 class="card-title">${data.name}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Engineer</h6>
+                 <ul class="list-group list-group-flush">
+                     <li class="list-group-item">ID: ${data.id}</li>
+                    <li class="list-group-item">Email: ${data.email}</li>
+                     <li class="list-group-item">School: ${data.school}</li>
+                </ul>
+            </div>
+        </div>
+    `
+    })
+}
 
 
 function addEngineer() {
@@ -97,7 +142,7 @@ function addIntern() {
 
 function teamBuilt() {
 
-    fs.writeFileSync('./dist/team.html', htmlMetaAndHeader(), (err) => err ? console.log(err) : console.log('success'))
+    fs.writeFileSync('./dist/team.html',renderHTML(), (err) => err ? console.log(err) : console.log('success'))
     // call at end of each addEmployee function at else
 
 
@@ -108,7 +153,7 @@ function init() {
 
 
 }
-const htmlMetaAndHeader = () => {
+const renderHTML = () => {
     return `<!DOCTYPE html>
     <html lang="en">
     <head>
@@ -125,7 +170,10 @@ const htmlMetaAndHeader = () => {
         <header>
             <h1>My Team</h1>
     <main class = 'container'>
+    <div class = 'row'>
     ${managerCard()}
+    ${engineerCard()}
+    ${internCard()}
     `
 
 }
