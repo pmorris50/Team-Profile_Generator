@@ -15,7 +15,7 @@ describe('testing Employee class', ()=>{
       expect(berry.email).toBe('b@email.com');
    })
    it('testing employee id method', ()=>{
-      expect(berry.getId()).toBe('b@email.com');
+      expect(berry.getId()).toBe('20');
    })
    it('testing employee role method', () => {
       expect(berry.getRole()).toBe('Employee')

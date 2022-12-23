@@ -70,7 +70,7 @@ const questions = {
         {
             type: 'input',
             name: 'email',
-            message: "What is the engineer's email?"
+            message: "What is the intern's email?"
         },
         {
             type: 'List',

@@ -35,7 +35,7 @@ function managerCard(manager) {
         return currentEmployee.getRole() == 'Manager';
     })
 
-    console.log(managerArray)
+   // console.log(managerArray)
 
 return managerArray.map((data) =>{
     return `
@@ -45,7 +45,7 @@ return managerArray.map((data) =>{
           <h6 class="card-subtitle mb-2 text-muted">Manager</h6>
              <ul class="list-group list-group-flush">
                  <li class="list-group-item">ID: ${data.id}</li>
-                <li class="list-group-item">Email: ${data.email}</li>
+                <li class="list-group-item">Email: <a href ="mailto: ${data.email}"> ${data.email}</a></li>
                  <li class="list-group-item">Office number: ${data.officeNumber}</li>
             </ul>
         </div>
@@ -59,7 +59,7 @@ function engineerCard(engineer) {
         return currentEmployee.getRole() == 'Engineer';
     })
 
-    console.log(engineerArray)
+   // console.log(engineerArray)
 
 return engineerArray.map((data) =>{
     return `
@@ -69,7 +69,7 @@ return engineerArray.map((data) =>{
           <h6 class="card-subtitle mb-2 text-muted">Engineer</h6>
              <ul class="list-group list-group-flush">
                  <li class="list-group-item">ID: ${data.id}</li>
-                <li class="list-group-item">Email: ${data.email}</li>
+                <li class="list-group-item">Email: <a href ="mailto: ${data.email}"> ${data.email}</a></li>
                  <li class="list-group-item">Github Profile: ${data.github}</li>
             </ul>
         </div>
@@ -82,7 +82,7 @@ function internCard(){
     let internArray = team.filter((currentEmployee) =>{
         return currentEmployee.getRole() == 'Intern';
     })
-    console.log(internArray)
+    //console.log(internArray)
     return internArray.map((data) =>{
         return `
         <div class="card" >
@@ -91,7 +91,7 @@ function internCard(){
               <h6 class="card-subtitle mb-2 text-muted">Engineer</h6>
                  <ul class="list-group list-group-flush">
                      <li class="list-group-item">ID: ${data.id}</li>
-                    <li class="list-group-item">Email: ${data.email}</li>
+                    <li class="list-group-item">Email: <a href = "mailto: ${data.email}"> ${data.email}</a></li>
                      <li class="list-group-item">School: ${data.school}</li>
                 </ul>
             </div>
