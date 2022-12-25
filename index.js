@@ -39,10 +39,12 @@ function managerCard(manager) {
 
 return managerArray.map((data) =>{
     return `
-    <div class="card" >
+    <div class="card text-center col-md-6 col-lg-3 m-auto" >
         <div class="card-body">
+        <div class = 'card-header'>
           <h5 class="card-title">${data.name}</h5>
           <h6 class="card-subtitle mb-2 text-muted">Manager</h6>
+          </div>
              <ul class="list-group list-group-flush">
                  <li class="list-group-item">ID: ${data.id}</li>
                 <li class="list-group-item">Email: <a href ="mailto: ${data.email}"> ${data.email}</a></li>
@@ -63,14 +65,16 @@ function engineerCard(engineer) {
 
 return engineerArray.map((data) =>{
     return `
-    <div class="card" >
+    <div class="card text-center col-md-6 col-lg-3 m-auto" >
         <div class="card-body">
+        <div class = 'card-header'>
           <h5 class="card-title">${data.name}</h5>
           <h6 class="card-subtitle mb-2 text-muted">Engineer</h6>
+          </div>
              <ul class="list-group list-group-flush">
                  <li class="list-group-item">ID: ${data.id}</li>
                 <li class="list-group-item">Email: <a href ="mailto: ${data.email}"> ${data.email}</a></li>
-                 <li class="list-group-item">Github Profile: ${data.github}</li>
+                 <li class="list-group-item">Github Profile: <a href = "${data.gitHubURL}"> ${data.github}</a></li>
             </ul>
         </div>
     </div>
@@ -85,10 +89,12 @@ function internCard(){
     //console.log(internArray)
     return internArray.map((data) =>{
         return `
-        <div class="card" >
+        <div class="card text-center col-md-6 col-lg-3 m-auto" >
             <div class="card-body">
+            <div class = 'card-header'
               <h5 class="card-title">${data.name}</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Engineer</h6>
+              <h6 class="card-subtitle mb-2 text-muted">Intern</h6>
+              </div>
                  <ul class="list-group list-group-flush">
                      <li class="list-group-item">ID: ${data.id}</li>
                     <li class="list-group-item">Email: <a href = "mailto: ${data.email}"> ${data.email}</a></li>
@@ -106,7 +112,7 @@ function addEngineer() {
         .then(data => {
             let employee = new Engineer(data.name, data.id, data.email, data.github)
             team.push(employee)
-            console.log(team)
+            //console.log(team)
             if (data.addTeamMember === 'Add an Engineer') {
                 return addEngineer()
             } else if (data.addTeamMember === "Add an Intern") {
@@ -126,7 +132,7 @@ function addIntern() {
         .then(data => {
             let employee = new Intern(data.name, data.id, data.email, data.school)
             team.push(employee)
-            console.log(team)
+           // console.log(team)
             if (data.addTeamMember === 'Add an Engineer') {
                 return addEngineer()
             } else if (data.addTeamMember === "Add an Intern") {
@@ -149,10 +155,7 @@ function teamBuilt() {
 }
 
 
-function init() {
 
-
-}
 const renderHTML = () => {
     return `<!DOCTYPE html>
     <html lang="en">
@@ -168,7 +171,7 @@ const renderHTML = () => {
     </head>
     <body>
         <header>
-            <h1>My Team</h1>
+            <h1 class ='text-center bg-primary text-white'> My Team</h1>
     <main class = 'container'>
     <div class = 'row'>
     ${managerCard()}
@@ -177,4 +180,4 @@ const renderHTML = () => {
     `
 
 }
-console.table(team);
+//console.table(team);

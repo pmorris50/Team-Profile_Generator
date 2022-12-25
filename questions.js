@@ -44,6 +44,11 @@ const questions = {
             message: "What is the engineer's email?"
         },
         {
+        type: "input",
+        name: "githubURL",
+        message: "What is the engineer's Github URL?"
+        },
+        {
             type: "input",
             name: "github",
             message: "What is the engineer's Github?"

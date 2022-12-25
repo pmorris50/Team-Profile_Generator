@@ -1,24 +1,27 @@
 const Engineer = require('../lib/Engineer.js')
-const berry = new Engineer('berry', '20', 'b@gmail.com', 'bgithub') 
+const berry = new Engineer('berry', '20', 'b@gmail.com', 'bgithub', 'URL') 
 
-describe('testing Employee class', ()=>{
-   it('testing employee name key', ()=>{
+describe('testing engineer class', ()=>{
+   it('testing engineer name key', ()=>{
     expect(berry.name).toBe('berry');
    })
-   it('testing employee name method', ()=>{
+   it('testing engineer name method', ()=>{
     expect(berry.getName()).toBe('berry');
    })
-   it('testing employee id key', ()=>{
+   it('testing engineer id key', ()=>{
       expect(berry.id).toBe('20')
    })
-   it('testing employee email key', ()=>{
+   it('testing engineer email key', ()=>{
       expect(berry.email).toBe('b@gmail.com');
    })
-   it('testing employee id method', ()=>{
+   it('testing engineer id method', ()=>{
       expect(berry.getGitHub()).toBe('bgithub');
    })
-   it('testing employee role method', () => {
+   it('testing engineer role method', () => {
       expect(berry.getRole()).toBe('Engineer');
+   })
+   it('testing engineer gitHubURL method', () =>{
+      expect(berry.getGitHubURL()).toBe('URL');
    })
 
 
